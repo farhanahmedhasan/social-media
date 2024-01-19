@@ -13,7 +13,12 @@ return new class extends Migration
     {
         Schema::create('post_attachments', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->foreignId('post_id')->constrained("posts");
+            $table->foreignId('user_id')->constrained('users');//which user created this attachment (if another admin add attachment to the post we will know who did it)
+            $table->string('name', 255); //test.png
+            $table->string('path', 255);
+            $table->string('mime', 25); //image/png
+            $table->timestamp('created_at')->nullable();
         });
     }
 
