@@ -1,15 +1,18 @@
 import {Head} from '@inertiajs/react';
 
-import Group from "@/Components/Group.jsx";
+import Groups from "@/Components/Groups.jsx";
+import Followings from "@/Components/Followings.jsx";
 
 export default function HomePage() {
     return (
         <>
             <Head title="Socially"/>
             <div className="grid gap-3 grid-cols-12">
-                <Group/>
-                <div className="col-span-6">Posts</div>
-                <div className="col-span-3">Users i am following</div>
+                <Groups/>
+                <div className="col-span-6">
+                    posts
+                </div>
+                <Followings/>
             </div>
         </>
     );
