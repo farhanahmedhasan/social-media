@@ -9,7 +9,7 @@ export default function Followings() {
     })
 
     return (
-        <div className="col-span-3 py-6 px-3">
+        <>
             <div className="px-1">
                 <h2 className="text-2xl font-bold mb-4">My Groups</h2>
                 <TextInput
@@ -30,6 +30,6 @@ export default function Followings() {
                     </ul>
                 }
             </div>
-        </div>
+        </>
     )
 }
