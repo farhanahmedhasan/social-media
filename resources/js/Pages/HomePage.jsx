@@ -1,9 +1,9 @@
 import {Head} from '@inertiajs/react';
 
-import Followings from "@/Components/Followings.jsx";
-import Groups from "@/Components/Groups.jsx";
-import Posts from "@/Components/Posts.jsx";
-import PostsCreate from "@/Components/PostsCreate.jsx";
+import Followings from "@/Components/app/Followings.jsx";
+import Groups from "@/Components/app/Groups.jsx";
+import Posts from "@/Components/app/Posts.jsx";
+import PostsCreate from "@/Components/app/PostsCreate.jsx";
 
 export default function HomePage() {
     return (

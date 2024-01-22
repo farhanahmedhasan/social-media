@@ -1,4 +1,4 @@
-import PostItem from "@/Components/PostItem.jsx";
+import PostItem from "@/Components/app/PostItem.jsx";
 
 const posts = [
     {
