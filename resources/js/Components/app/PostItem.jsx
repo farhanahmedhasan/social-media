@@ -1,5 +1,6 @@
 import {Disclosure} from "@headlessui/react";
 import {Link} from "@inertiajs/react";
+import PostAttachment from "@/Components/app/PostAttachment.jsx";
 
 export default function PostItem({post}) {
     return (
@@ -23,21 +24,32 @@ export default function PostItem({post}) {
                 </div>
             </header>
 
-            <div>
-                <Disclosure>
-                    {({open}) => (
-                        <>
-                            {!open && <div dangerouslySetInnerHTML={{__html: post.body.substring(0, 255)}}/>}
-                            <Disclosure.Panel>
-                                <div dangerouslySetInnerHTML={{__html: post.body}}/>
-                            </Disclosure.Panel>
-                            <Disclosure.Button>
+            <Disclosure className="mb-2" as="div">
+                {({open}) => (
+                    <>
+                        {!open && <div dangerouslySetInnerHTML={{__html: post.body.substring(0, 255)}}/>}
+                        <Disclosure.Panel>
+                            <div dangerouslySetInnerHTML={{__html: post.body}}/>
+                        </Disclosure.Panel>
+                        <Disclosure.Button>
                                 <span
                                     className="font-semibold text-blue-500 hover:underline">{open ? "See less" : "See more..."}</span>
-                            </Disclosure.Button>
-                        </>
-                    )}
-                </Disclosure>
+                        </Disclosure.Button>
+                    </>
+                )}
+            </Disclosure>
+
+            {/*attachments*/}
+            <div className="grid grid-cols-2 lg:grid-cols-3 gap-3">
+                {post.attachments?.map(attachment => {
+                    return <PostAttachment key={attachment.id} attachment={attachment}/>
+                })}
+            </div>
+
+            {/*Reactions*/}
+            <div>
+                <button>Like</button>
+                <button>Comment</button>
             </div>
         </article>
     )
