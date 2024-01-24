@@ -1,6 +1,7 @@
 import {Disclosure} from "@headlessui/react";
 import {Link} from "@inertiajs/react";
 import PostAttachment from "@/Components/app/PostAttachment.jsx";
+import PostReactions from "@/Components/app/PostReactions.jsx";
 
 export default function PostItem({post}) {
     return (
@@ -40,17 +41,14 @@ export default function PostItem({post}) {
             </Disclosure>
 
             {/*attachments*/}
-            <div className="grid grid-cols-2 lg:grid-cols-3 gap-3">
+            <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 mb-3">
                 {post.attachments?.map(attachment => {
                     return <PostAttachment key={attachment.id} attachment={attachment}/>
                 })}
             </div>
 
             {/*Reactions*/}
-            <div>
-                <button>Like</button>
-                <button>Comment</button>
-            </div>
+            <PostReactions/>
         </article>
     )
 }
