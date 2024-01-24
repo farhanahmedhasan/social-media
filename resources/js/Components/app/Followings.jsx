@@ -9,9 +9,9 @@ export default function Followings() {
     })
 
     return (
-        <>
+        <div className="bg-white px-2 pt-2 border rounded">
             <div className="px-1">
-                <h2 className="text-2xl font-bold mb-4">My Groups</h2>
+                <h2 className="text-xl font-bold mb-4">My Followings</h2>
                 <TextInput
                     name="name"
                     value={data.name}
@@ -30,6 +30,6 @@ export default function Followings() {
                     </ul>
                 }
             </div>
-        </>
+        </div>
     )
 }

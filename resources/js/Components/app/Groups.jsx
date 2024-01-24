@@ -9,10 +9,11 @@ export default function Groups() {
     })
 
     return (
-        <>
+        <div className="bg-white px-2 pt-2 border rounded">
             <div className="px-1">
-                <h2 className="text-2xl font-bold mb-4">My Groups</h2>
+                <h2 className="text-xl font-bold mb-4">My Groups</h2>
                 <TextInput
+                    className="w-full"
                     name="name"
                     value={data.name}
                     onChange={(e) => setData("name", e.target.value)}
@@ -31,6 +32,6 @@ export default function Groups() {
                     </ul>
                 }
             </div>
-        </>
+        </div>
     )
 }
