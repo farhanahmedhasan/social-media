@@ -12,7 +12,7 @@ export default function PostAttachment({attachment}) {
             {isImage(attachment) &&
                 <div className="relative">
                     <img src={attachment.path} alt={attachment.name} className="object-cover aspect-square"/>
-                    <button className="absolute right-2 top-2 cursor-pointer bg-gray-800 hover:bg-gray-700 p-2 rounded">
+                    <button className="absolute right-2 top-2 cursor-pointer bg-gray-800 hover:bg-gray-900 p-2 rounded">
                         <DownloadIcon className="text-gray-100 h-4 w-4"/>
                     </button>
                 </div>
@@ -21,7 +21,7 @@ export default function PostAttachment({attachment}) {
                 <div className="relative flex flex-col gap-2 items-center justify-center aspect-square bg-blue-50">
                     <DocumentIcon/>
                     <p>{attachment.name}</p>
-                    <button className="absolute right-2 top-2 cursor-pointer bg-gray-800 hover:bg-gray-700 p-2 rounded">
+                    <button className="absolute right-2 top-2 cursor-pointer bg-gray-800 hover:bg-gray-900 p-2 rounded">
                         <DownloadIcon className="text-gray-100 h-4 w-4"/>
                     </button>
                 </div>
