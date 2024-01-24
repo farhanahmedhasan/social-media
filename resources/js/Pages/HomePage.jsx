@@ -9,7 +9,7 @@ export default function HomePage() {
     return (
         <>
             <Head title="Socially"/>
-            <div className="px-2 pt-4 grid gap-y-3 lg:gap-y-0 lg:gap-x-3 lg:grid-cols-12">
+            <div className="px-2 pt-4 grid gap-y-4 lg:gap-y-0 lg:gap-x-3 lg:grid-cols-12">
                 <div className="lg:col-span-3">
                     <Groups/>
                 </div>
