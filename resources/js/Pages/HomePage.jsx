@@ -10,16 +10,16 @@ export default function HomePage() {
         <>
             <Head title="Socially"/>
             <div className="grid gap-3 grid-cols-12">
-                <div className="col-span-3 py-6 px-3">
+                <div className="lg:col-span-3 py-6 px-3">
                     <Groups/>
                 </div>
 
-                <div className="col-span-6 py-6 px-3">
+                <div className="lg:col-span-6 py-6 px-3">
                     <PostsCreate/>
                     <Posts/>
                 </div>
 
-                <div className="col-span-3  py-6 px-3">
+                <div className="lg:col-span-3  py-6 px-3">
                     <Followings/>
                 </div>
 
