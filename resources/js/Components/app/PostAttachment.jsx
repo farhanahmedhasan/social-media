@@ -10,18 +10,20 @@ export default function PostAttachment({attachment}) {
     return (
         <>
             {isImage(attachment) &&
-                <div className="relative">
+                <div className="relative group">
                     <img src={attachment.path} alt={attachment.name} className="object-cover aspect-square"/>
-                    <button className="absolute right-2 top-2 cursor-pointer bg-gray-800 hover:bg-gray-900 p-2 rounded">
+                    <button
+                        className="opacity-0 absolute right-2 top-2 cursor-pointer bg-gray-800 p-2 rounded transition-all hover:bg-gray-900 group-hover:opacity-100">
                         <DownloadIcon className="text-gray-100 h-4 w-4"/>
                     </button>
                 </div>
             }
             {!isImage(attachment) &&
-                <div className="relative flex flex-col gap-2 items-center justify-center aspect-square bg-blue-50">
+                <div className="group relative flex flex-col gap-2 items-center justify-center bg-blue-50">
                     <DocumentIcon/>
-                    <p>{attachment.name}</p>
-                    <button className="absolute right-2 top-2 cursor-pointer bg-gray-800 hover:bg-gray-900 p-2 rounded">
+                    <p className="text-sm">{attachment.name}</p>
+                    <button
+                        className="opacity-0 absolute right-2 top-2 cursor-pointer bg-gray-800 p-2 rounded transition-all hover:bg-gray-900 group-hover:opacity-100">
                         <DownloadIcon className="text-gray-100 h-4 w-4"/>
                     </button>
                 </div>
