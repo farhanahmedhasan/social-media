@@ -31,7 +31,7 @@ export default function Followings() {
                                     onChange={(e) => setData("name", e.target.value)}
                                     placeholder="Find your group"
                                 />
-                                <div className="h-[20vh] lg:h-[calc(100vh-128px)] overflow-y-auto mt-4 pb-4">
+                                <div className="h-[20vh] lg:h-[calc(100vh-193px)] overflow-y-auto mt-4 pb-4">
                                     {0 ?
                                         <p className="text-gray-400 text-center">You are not following anyone yet</p>
                                         :
@@ -82,7 +82,7 @@ export default function Followings() {
                         placeholder="Find the user you are following"
                     />
                 </div>
-                <div className="h-[20vh] lg:h-[calc(100vh-128px)] overflow-y-auto mt-4 pb-4">
+                <div className="h-[20vh] lg:h-[calc(100vh-193px)] overflow-y-auto mt-4 pb-4">
                     {0 ?
                         <p className="text-gray-400 text-center">You are not following anyone yet</p>
                         :

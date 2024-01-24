@@ -32,7 +32,7 @@ export default function Groups() {
                                     onChange={(e) => setData("name", e.target.value)}
                                     placeholder="Find your group"
                                 />
-                                <div className="h-[20vh] lg:h-[calc(100vh-128px)] overflow-y-auto mt-4 pb-4">
+                                <div className="h-[20vh] lg:h-[calc(100vh-193px)] overflow-y-auto mt-4 pb-4">
                                     {0 ?
                                         <p className="text-gray-400 text-center">You are not joined into any groups </p>
                                         :
@@ -123,7 +123,7 @@ export default function Groups() {
                         placeholder="Find your group"
                     />
                 </div>
-                <div className="h-[20vh] lg:h-[calc(100vh-128px)] overflow-y-auto mt-4 pb-4">
+                <div className="h-[20vh] lg:h-[calc(100vh-193px)] overflow-y-auto mt-4 pb-4">
                     {0 ?
                         <p className="text-gray-400 text-center">You are not joined into any groups </p>
                         :

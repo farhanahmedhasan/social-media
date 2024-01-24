@@ -1,5 +1,6 @@
 import {Head} from '@inertiajs/react';
 
+import Authenticated from "@/Layouts/AuthenticatedLayout.jsx";
 import PostsCreate from "@/Components/app/PostsCreate.jsx";
 import Followings from "@/Components/app/Followings.jsx";
 import Groups from "@/Components/app/Groups.jsx";
@@ -7,7 +8,7 @@ import Posts from "@/Components/app/Posts.jsx";
 
 export default function HomePage() {
     return (
-        <>
+        <Authenticated>
             <Head title="Socially"/>
             <div className="px-2 pt-4 grid gap-y-4 lg:gap-y-0 lg:gap-x-3 lg:grid-cols-12">
                 <div className="lg:col-span-3">
@@ -23,6 +24,6 @@ export default function HomePage() {
                     <Posts/>
                 </div>
             </div>
-        </>
+        </Authenticated>
     );
 }
