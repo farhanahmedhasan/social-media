@@ -9,7 +9,7 @@ export default function Groups() {
     })
 
     return (
-        <div className="bg-white px-2 pt-2 border rounded">
+        <div className=" bg-white px-2 pt-2 border rounded ">
             <div className="px-1">
                 <h2 className="text-xl font-bold mb-4">My Groups</h2>
                 <TextInput
@@ -20,7 +20,7 @@ export default function Groups() {
                     placeholder="Find your group"
                 />
             </div>
-            <div className="py-8">
+            <div className="h-[20vh] lg:h-[calc(100vh-128px)] overflow-y-auto mt-4 pb-4">
                 {0 ?
                     <p className="text-gray-400 text-center">You are not joined into any groups </p>
                     :
@@ -29,6 +29,68 @@ export default function Groups() {
                                    description="THis is some dummy text"/>
                         <GroupItem image="https://source.unsplash.com/random" title="Vue Devs"
                                    description="This is a vue group which is almost a year old"/>
+                        <GroupItem image="https://source.unsplash.com/random" title="Vue Devs"
+                                   description="This is a vue group which is almost a year old"/>
+                        <GroupItem image="https://source.unsplash.com/random" title="Vue Devs"
+                                   description="This is a vue group which is almost a year old"/>
+                        <GroupItem image="https://source.unsplash.com/random" title="Vue Devs"
+                                   description="This is a vue group which is almost a year old"/>
+                        <GroupItem image="https://source.unsplash.com/random" title="Vue Devs"
+                                   description="This is a vue group which is almost a year old"/>
+                        <GroupItem image="https://source.unsplash.com/random" title="Vue Devs"
+                                   description="This is a vue group which is almost a year old"/>
+                        <GroupItem image="https://source.unsplash.com/random" title="Vue Devs"
+                                   description="This is a vue group which is almost a year old"/>
+                        <GroupItem image="https://source.unsplash.com/random" title="Vue Devs"
+                                   description="This is a vue group which is almost a year old"/>
+                        <GroupItem image="https://source.unsplash.com/random" title="Vue Devs"
+                                   description="This is a vue group which is almost a year old"/>
+                        <GroupItem image="https://source.unsplash.com/random" title="Vue Devs"
+                                   description="This is a vue group which is almost a year old"/>
+                        <GroupItem image="https://source.unsplash.com/random" title="Vue Devs"
+                                   description="This is a vue group which is almost a year old"/>
+                        <GroupItem image="https://source.unsplash.com/random" title="Vue Devs"
+                                   description="This is a vue group which is almost a year old"/>
+                        <GroupItem image="https://source.unsplash.com/random" title="Vue Devs"
+                                   description="This is a vue group which is almost a year old"/>
+                        <GroupItem image="https://source.unsplash.com/random" title="Vue Devs"
+                                   description="This is a vue group which is almost a year old"/><GroupItem
+                        image="https://source.unsplash.com/random" title="Vue Devs"
+                        description="This is a vue group which is almost a year old"/><GroupItem
+                        image="https://source.unsplash.com/random" title="Vue Devs"
+                        description="This is a vue group which is almost a year old"/><GroupItem
+                        image="https://source.unsplash.com/random" title="Vue Devs"
+                        description="This is a vue group which is almost a year old"/><GroupItem
+                        image="https://source.unsplash.com/random" title="Vue Devs"
+                        description="This is a vue group which is almost a year old"/><GroupItem
+                        image="https://source.unsplash.com/random" title="Vue Devs"
+                        description="This is a vue group which is almost a year old"/><GroupItem
+                        image="https://source.unsplash.com/random" title="Vue Devs"
+                        description="This is a vue group which is almost a year old"/><GroupItem
+                        image="https://source.unsplash.com/random" title="Vue Devs"
+                        description="This is a vue group which is almost a year old"/><GroupItem
+                        image="https://source.unsplash.com/random" title="Vue Devs"
+                        description="This is a vue group which is almost a year old"/><GroupItem
+                        image="https://source.unsplash.com/random" title="Vue Devs"
+                        description="This is a vue group which is almost a year old"/><GroupItem
+                        image="https://source.unsplash.com/random" title="Vue Devs"
+                        description="This is a vue group which is almost a year old"/><GroupItem
+                        image="https://source.unsplash.com/random" title="Vue Devs"
+                        description="This is a vue group which is almost a year old"/><GroupItem
+                        image="https://source.unsplash.com/random" title="Vue Devs"
+                        description="This is a vue group which is almost a year old"/><GroupItem
+                        image="https://source.unsplash.com/random" title="Vue Devs"
+                        description="This is a vue group which is almost a year old"/><GroupItem
+                        image="https://source.unsplash.com/random" title="Vue Devs"
+                        description="This is a vue group which is almost a year old"/><GroupItem
+                        image="https://source.unsplash.com/random" title="Vue Devs"
+                        description="This is a vue group which is almost a year old"/><GroupItem
+                        image="https://source.unsplash.com/random" title="Vue Devs"
+                        description="This is a vue group which is almost a year old"/><GroupItem
+                        image="https://source.unsplash.com/random" title="Vue Devsss"
+                        description="This is a vue group which is almost a year old"/>
+
+
                     </ul>
                 }
             </div>

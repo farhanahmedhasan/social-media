@@ -20,13 +20,30 @@ export default function Followings() {
                     placeholder="Find the user you are following"
                 />
             </div>
-            <div className="py-8">
+            <div className="h-[20vh] lg:h-[calc(100vh-128px)] overflow-y-auto mt-4 pb-4">
                 {0 ?
-                    <p className="text-gray-400 text-center">You are not following anyone</p>
+                    <p className="text-gray-400 text-center">You are not following anyone yet</p>
                     :
                     <ul>
                         <FollowingItem image="https://source.unsplash.com/random" title="Jane Doe"/>
                         <FollowingItem image="https://source.unsplash.com/random" title="Mia Malkova"/>
+                        <FollowingItem image="https://source.unsplash.com/random" title="Mia Malkova"/>
+                        <FollowingItem image="https://source.unsplash.com/random" title="Mia Malkova"/>
+                        <FollowingItem image="https://source.unsplash.com/random" title="Mia Malkova"/>
+                        <FollowingItem image="https://source.unsplash.com/random" title="Mia Malkova"/>
+                        <FollowingItem image="https://source.unsplash.com/random" title="Mia Malkova"/>
+                        <FollowingItem image="https://source.unsplash.com/random" title="Mia Malkova"/>
+                        <FollowingItem image="https://source.unsplash.com/random" title="Mia Malkova"/>
+                        <FollowingItem image="https://source.unsplash.com/random" title="Mia Malkova"/>
+                        <FollowingItem image="https://source.unsplash.com/random" title="Jane Doe"/>
+                        <FollowingItem image="https://source.unsplash.com/random" title="Jane Doe"/>
+                        <FollowingItem image="https://source.unsplash.com/random" title="Jane Doe"/>
+                        <FollowingItem image="https://source.unsplash.com/random" title="Jane Doe"/>
+                        <FollowingItem image="https://source.unsplash.com/random" title="Jane Doe"/>
+                        <FollowingItem image="https://source.unsplash.com/random" title="Jane Doe"/>
+                        <FollowingItem image="https://source.unsplash.com/random" title="Jane Doe"/>
+                        <FollowingItem image="https://source.unsplash.com/random" title="Jane Doe"/>
+
                     </ul>
                 }
             </div>

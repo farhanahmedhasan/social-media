@@ -8,7 +8,7 @@ export default function PostsCreate() {
     }
 
     return (
-        <div className="bg-white p-4 mb-6 rounded-lg">
+        <div className="flex-1 bg-white p-4 mb-6 rounded-lg">
             <p className="text-gray-500 border border-gray-300 rounded py-3 px-2 cursor-pointer"
                onClick={handlePostCreating}>Click
                 here to create your post
