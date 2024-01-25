@@ -2,6 +2,7 @@ import {Head} from '@inertiajs/react';
 import {Tab} from "@headlessui/react";
 
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
+import EditIcon from "@/Components/icons/EditIcon.jsx";
 import Edit from "@/Pages/Profile/Edit.jsx";
 
 const coverImageSrc = "https://e0.pxfuel.com/wallpapers/137/952/desktop-wallpaper-facebook-cover-love-lovely-nice-cool-touch-beauty.jpg"
@@ -19,27 +20,28 @@ const tabs = [
     {id: 'followings', name: 'Followings'},
 ]
 
-export default function Index({auth, mustVerifyEmail, status}) {
-    const user = auth.user
-
+export default function Index({auth, user, mustVerifyEmail, status}) {
+    const authUser = auth.user
     return (
-        <AuthenticatedLayout user={auth.user}>
+        <AuthenticatedLayout user={user}>
             <Head title="Profile"/>
             <section className="container mx-auto">
                 <div className="bg-white">
-                    <img src={coverImageSrc} alt={user.cover_path} className="h-[400px] w-full object-cover"/>
+                    <img src={coverImageSrc} alt={user?.cover_path} className="h-[400px] w-full object-cover"/>
 
                     <div className="flex justify-between ml-10 -mt-20 pb-4">
                         <div className="flex space-x-4">
-                            <img src={avatarImageSrc} alt={user.avatar_path}
+                            <img src={avatarImageSrc} alt={user?.avatar_path}
                                  className="h-48 w-48 border-2 border-gray-200 rounded-full"/>
                             <div>
-                                <h2 className="text-3xl capitalize font-semibold mt-24">{user.name}</h2>
+                                <h2 className="text-3xl capitalize font-semibold mt-24">{user?.name}</h2>
                                 <span className="text-sm font-medium mt-24">1105 Followings</span>
                             </div>
                         </div>
                         <button
-                            className="bg-blue-500 text-white font-medium text-lg rounded mt-20 py-2 px-10 mr-10 self-center hover:bg-blue-600">Edit
+                            className="flex items-center rounded space-x-2 bg-blue-500 text-white mt-20 py-2 px-6 mr-10 self-center hover:bg-blue-600">
+                            <EditIcon fill="#fff"/>
+                            <span>Edit</span>
                         </button>
                     </div>
                 </div>
@@ -49,6 +51,7 @@ export default function Index({auth, mustVerifyEmail, status}) {
                     <Tab.Group>
                         <Tab.List className="flex space-x-6 bg-white px-8">
                             {tabs.map(tab => {
+                                if (!(authUser) && (tab.id === "about")) return
                                 return <Tab
                                     key={tab.id}
                                     className={({selected}) =>
@@ -69,9 +72,11 @@ export default function Index({auth, mustVerifyEmail, status}) {
                             <Tab.Panel className="bg-white shadow">
                                 <h1>Posts</h1>
                             </Tab.Panel>
-                            <Tab.Panel className="bg-white shadow">
-                                <Edit user={user} mustVerifyEmail={mustVerifyEmail} status={status}/>
-                            </Tab.Panel>
+                            {authUser &&
+                                <Tab.Panel className="bg-white shadow">
+                                    <Edit user={authUser} mustVerifyEmail={mustVerifyEmail} status={status}/>
+                                </Tab.Panel>
+                            }
                             <Tab.Panel className="bg-white shadow">
                                 <h1>Photos</h1>
                             </Tab.Panel>

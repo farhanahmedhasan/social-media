@@ -31,7 +31,7 @@ export default function Authenticated({user, header, children}) {
                                                 type="button"
                                                 className="inline-flex items-center gap-2 px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 dark:text-gray-400 bg-white hover:text-gray-700 dark:hover:text-gray-300 focus:outline-none transition ease-in-out duration-150"
                                             >
-                                                {user.name}
+                                                {user?.name}
                                                 <ArrowDownIcon className="h-3 w-3"/>
                                             </button>
                                         </span>
@@ -39,7 +39,7 @@ export default function Authenticated({user, header, children}) {
 
                                     <Dropdown.Content>
                                         <Dropdown.Link
-                                            href={route('profile', {username: user.username})}>Profile</Dropdown.Link>
+                                            href={route('profile', {username: user?.username})}>Profile</Dropdown.Link>
                                         {/*<Dropdown.Link href={route('profile.edit')}>Profile</Dropdown.Link>*/}
                                         {/*<Dropdown.Link href={route('logout')} method="post" as="button">*/}
                                         {/*    Log Out*/}
