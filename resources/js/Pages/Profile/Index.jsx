@@ -22,8 +22,10 @@ const tabs = [
 
 export default function Index({auth, user, mustVerifyEmail, status}) {
     const authUser = auth.user
+    const isMyProfile = authUser?.id === user?.id
+
     return (
-        <AuthenticatedLayout user={user}>
+        <AuthenticatedLayout user={authUser}>
             <Head title="Profile"/>
             <section className="container mx-auto">
                 <div className="bg-white">
@@ -38,11 +40,13 @@ export default function Index({auth, user, mustVerifyEmail, status}) {
                                 <span className="text-sm font-medium mt-24">1105 Followings</span>
                             </div>
                         </div>
-                        <button
-                            className="flex items-center rounded space-x-2 bg-blue-500 text-white mt-20 py-2 px-6 mr-10 self-center hover:bg-blue-600">
-                            <EditIcon fill="#fff"/>
-                            <span>Edit</span>
-                        </button>
+                        {isMyProfile &&
+                            <button
+                                className="flex items-center rounded space-x-2 bg-blue-500 text-white mt-20 py-2 px-6 mr-10 self-center hover:bg-blue-600">
+                                <EditIcon fill="#fff"/>
+                                <span>Edit</span>
+                            </button>
+                        }
                     </div>
                 </div>
 
@@ -51,7 +55,7 @@ export default function Index({auth, user, mustVerifyEmail, status}) {
                     <Tab.Group>
                         <Tab.List className="flex space-x-6 bg-white px-8">
                             {tabs.map(tab => {
-                                if (!(authUser) && (tab.id === "about")) return
+                                if (!(isMyProfile) && (tab.id === "about")) return
                                 return <Tab
                                     key={tab.id}
                                     className={({selected}) =>
@@ -72,7 +76,7 @@ export default function Index({auth, user, mustVerifyEmail, status}) {
                             <Tab.Panel className="bg-white shadow">
                                 <h1>Posts</h1>
                             </Tab.Panel>
-                            {authUser &&
+                            {isMyProfile &&
                                 <Tab.Panel className="bg-white shadow">
                                     <Edit user={authUser} mustVerifyEmail={mustVerifyEmail} status={status}/>
                                 </Tab.Panel>
