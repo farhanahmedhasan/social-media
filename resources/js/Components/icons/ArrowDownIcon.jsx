@@ -1,6 +1,7 @@
-export default function ArrowDownIcon() {
+export default function ArrowDownIcon({className}) {
     return (
-        <svg width="16px" height="16px" viewBox="0 -4.5 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg"
+        <svg className={className} width="16px" height="16px" viewBox="0 -4.5 20 20" version="1.1"
+             xmlns="http://www.w3.org/2000/svg"
              xmlnsXlink="http://www.w3.org/1999/xlink" fill="#000000">
             <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
             <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g>

@@ -1,7 +1,7 @@
 import {Link} from '@inertiajs/react';
 import {useState} from 'react';
 
-import ResponsiveNavLink from '@/Components/ResponsiveNavLink';
+import ArrowDownIcon from "@/Components/icons/ArrowDownIcon.jsx";
 import ApplicationLogo from '@/Components/ApplicationLogo';
 import Dropdown from '@/Components/Dropdown';
 
@@ -29,31 +29,21 @@ export default function Authenticated({user, header, children}) {
                                         <span className="inline-flex rounded-md">
                                             <button
                                                 type="button"
-                                                className="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 dark:text-gray-400 bg-white hover:text-gray-700 dark:hover:text-gray-300 focus:outline-none transition ease-in-out duration-150"
+                                                className="inline-flex items-center gap-2 px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 dark:text-gray-400 bg-white hover:text-gray-700 dark:hover:text-gray-300 focus:outline-none transition ease-in-out duration-150"
                                             >
-                                                hasan
-
-                                                <svg
-                                                    className="ms-2 -me-0.5 h-4 w-4"
-                                                    xmlns="http://www.w3.org/2000/svg"
-                                                    viewBox="0 0 20 20"
-                                                    fill="currentColor"
-                                                >
-                                                    <path
-                                                        fillRule="evenodd"
-                                                        d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                                                        clipRule="evenodd"
-                                                    />
-                                                </svg>
+                                                {user.name}
+                                                <ArrowDownIcon className="h-3 w-3"/>
                                             </button>
                                         </span>
                                     </Dropdown.Trigger>
 
                                     <Dropdown.Content>
-                                        <Dropdown.Link href={route('profile.edit')}>Profile</Dropdown.Link>
-                                        <Dropdown.Link href={route('logout')} method="post" as="button">
-                                            Log Out
-                                        </Dropdown.Link>
+                                        <Dropdown.Link
+                                            href={route('profile', {username: user.username})}>Profile</Dropdown.Link>
+                                        {/*<Dropdown.Link href={route('profile.edit')}>Profile</Dropdown.Link>*/}
+                                        {/*<Dropdown.Link href={route('logout')} method="post" as="button">*/}
+                                        {/*    Log Out*/}
+                                        {/*</Dropdown.Link>*/}
                                     </Dropdown.Content>
                                 </Dropdown>
                             </div>
@@ -93,10 +83,11 @@ export default function Authenticated({user, header, children}) {
                         </div>
 
                         <div className="mt-3 space-y-1">
-                            <ResponsiveNavLink href={route('profile.edit')}>Profile</ResponsiveNavLink>
-                            <ResponsiveNavLink method="post" href={route('logout')} as="button">
-                                Log Out
-                            </ResponsiveNavLink>
+                            <Dropdown.Link href={route('profile', {username: user.username})}>Profile</Dropdown.Link>
+                            {/*<ResponsiveNavLink href={route('profile.edit')}>Profile</ResponsiveNavLink>*/}
+                            {/*<ResponsiveNavLink method="post" href={route('logout')} as="button">*/}
+                            {/*    Log Out*/}
+                            {/*</ResponsiveNavLink>*/}
                         </div>
                     </div>
                 </div>
