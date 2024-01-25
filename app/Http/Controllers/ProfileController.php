@@ -14,10 +14,12 @@ use Inertia\Response;
 
 class ProfileController extends Controller
 {
-    public function index(User $user): Response
+    public function index(User $user, Request $request): Response
     {
         return Inertia::render('Profile/Index', [
             'user' => $user,
+            'mustVerifyEmail' => $request->user() instanceof MustVerifyEmail,
+            'status' => session('status'),
         ]);
     }
 

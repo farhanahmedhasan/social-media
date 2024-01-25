@@ -1,18 +1,89 @@
 import {Head} from '@inertiajs/react';
+import {Tab} from "@headlessui/react";
 
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
+import Edit from "@/Pages/Profile/Edit.jsx";
 
-export default function Index({auth}) {
+const coverImageSrc = "https://e0.pxfuel.com/wallpapers/137/952/desktop-wallpaper-facebook-cover-love-lovely-nice-cool-touch-beauty.jpg"
+const avatarImageSrc = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTsL9XLTllyzS3N8bzu_xTZVKnbTAfn1yV0qA&usqp=CAU"
+
+function classNames(...classes) {
+    return classes.filter(Boolean).join(' ')
+}
+
+const tabs = [
+    {id: 'posts', name: 'Posts'},
+    {id: 'about', name: 'About'},
+    {id: 'photos', name: 'Photos'},
+    {id: 'followers', name: 'Followers'},
+    {id: 'followings', name: 'Followings'},
+]
+
+export default function Index({auth, mustVerifyEmail, status}) {
     const user = auth.user
+
     return (
         <AuthenticatedLayout user={auth.user}>
             <Head title="Profile"/>
-            <section className="py-12">
-                {/* Cover */}
-                <p>Hi there</p>
-                {/* Profile */}
+            <section className="container mx-auto">
+                <div className="bg-white">
+                    <img src={coverImageSrc} alt={user.cover_path} className="h-[400px] w-full object-cover"/>
+
+                    <div className="flex justify-between ml-10 -mt-20 pb-4">
+                        <div className="flex space-x-4">
+                            <img src={avatarImageSrc} alt={user.avatar_path}
+                                 className="h-48 w-48 border-2 border-gray-200 rounded-full"/>
+                            <div>
+                                <h2 className="text-3xl capitalize font-semibold mt-24">{user.name}</h2>
+                                <span className="text-sm font-medium mt-24">1105 Followings</span>
+                            </div>
+                        </div>
+                        <button
+                            className="bg-blue-500 text-white font-medium text-lg rounded mt-20 py-2 px-10 mr-10 self-center hover:bg-blue-600">Edit
+                        </button>
+                    </div>
+                </div>
 
                 {/* Tabs */}
+                <div className="border-t max-w-7xl mx-auto px-2 sm:px-0">
+                    <Tab.Group>
+                        <Tab.List className="flex space-x-6 bg-white px-8">
+                            {tabs.map(tab => {
+                                return <Tab
+                                    key={tab.id}
+                                    className={({selected}) =>
+                                        classNames(
+                                            'pt-2.5 pb-2 font-medium focus:outline-none',
+                                            selected
+                                                ? 'text-blue-700 border-b-2 border-blue-500'
+                                                : 'text-gray-700 border-b-2 border-transparent hover:text-gray-800'
+                                        )
+                                    }
+                                >
+                                    {tab.name}
+                                </Tab>
+                            })}
+                        </Tab.List>
+
+                        <Tab.Panels className="mt-4">
+                            <Tab.Panel className="bg-white shadow">
+                                <h1>Posts</h1>
+                            </Tab.Panel>
+                            <Tab.Panel className="bg-white shadow">
+                                <Edit user={user} mustVerifyEmail={mustVerifyEmail} status={status}/>
+                            </Tab.Panel>
+                            <Tab.Panel className="bg-white shadow">
+                                <h1>Photos</h1>
+                            </Tab.Panel>
+                            <Tab.Panel className="bg-white shadow">
+                                <h1>Followers</h1>
+                            </Tab.Panel>
+                            <Tab.Panel className="bg-white shadow">
+                                <h1>Followings</h1>
+                            </Tab.Panel>
+                        </Tab.Panels>
+                    </Tab.Group>
+                </div>
             </section>
         </AuthenticatedLayout>
     );
