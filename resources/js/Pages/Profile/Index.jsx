@@ -1,11 +1,11 @@
 import {Head} from '@inertiajs/react';
 import {Tab} from "@headlessui/react";
 
+import CoverImage from "@/Pages/Profile/Partials/CoverImage.jsx";
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import EditIcon from "@/Components/icons/EditIcon.jsx";
 import Edit from "@/Pages/Profile/Edit.jsx";
 
-const coverImageSrc = "https://e0.pxfuel.com/wallpapers/137/952/desktop-wallpaper-facebook-cover-love-lovely-nice-cool-touch-beauty.jpg"
 const avatarImageSrc = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTsL9XLTllyzS3N8bzu_xTZVKnbTAfn1yV0qA&usqp=CAU"
 
 function classNames(...classes) {
@@ -28,8 +28,8 @@ export default function Index({auth, user, mustVerifyEmail, status}) {
         <AuthenticatedLayout user={authUser}>
             <Head title="Profile"/>
             <section className="container mx-auto">
-                <div className="bg-white">
-                    <img src={coverImageSrc} alt={user?.cover_path} className="h-[400px] w-full object-cover"/>
+                <div className="relative group bg-white">
+                    <CoverImage isMyProfile={isMyProfile} user={user}/>
 
                     <div className="flex justify-between ml-10 -mt-20 pb-4">
                         <div className="flex space-x-4">
@@ -51,7 +51,7 @@ export default function Index({auth, user, mustVerifyEmail, status}) {
                 </div>
 
                 {/* Tabs */}
-                <div className="border-t max-w-7xl mx-auto px-2 sm:px-0">
+                <div className="border-t px-2 sm:px-0">
                     <Tab.Group>
                         <Tab.List className="flex space-x-6 bg-white px-8">
                             {tabs.map(tab => {
