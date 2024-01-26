@@ -2,8 +2,6 @@ import {useForm} from "@inertiajs/react";
 
 import ImageEditIcon from "@/Components/icons/ImageEditIcon.jsx";
 
-const coverImageSrc = "https://e0.pxfuel.com/wallpapers/137/952/desktop-wallpaper-facebook-cover-love-lovely-nice-cool-touch-beauty.jpg"
-
 export default function CoverImage({isMyProfile, user}) {
     const {data, setData, post} = useForm({
         cover: ""
@@ -16,7 +14,7 @@ export default function CoverImage({isMyProfile, user}) {
     return (
         <>
             {!user.cover_path ? <div className="h-[360px] w-full bg-black"></div>
-                : <img src={coverImageSrc} alt={user?.cover_path} className="h-[360px] w-full object-cover"/>
+                : <img src={user?.cover_path} alt={user?.cover_path} className="h-[360px] w-full object-cover"/>
             }
             {isMyProfile &&
                 <button
