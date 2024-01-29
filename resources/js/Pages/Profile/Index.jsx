@@ -6,8 +6,6 @@ import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import EditIcon from "@/Components/icons/EditIcon.jsx";
 import Edit from "@/Pages/Profile/Edit.jsx";
 
-const avatarImageSrc = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTsL9XLTllyzS3N8bzu_xTZVKnbTAfn1yV0qA&usqp=CAU"
-
 function classNames(...classes) {
     return classes.filter(Boolean).join(' ')
 }
@@ -33,7 +31,7 @@ export default function Index({auth, user, mustVerifyEmail, status}) {
 
                     <div className="flex justify-between ml-10 -mt-20 pb-4">
                         <div className="flex space-x-4">
-                            <img src={avatarImageSrc} alt={user?.avatar_path}
+                            <img src="/images/defaults/user-profile.png" alt={user?.avatar_path}
                                  className="h-48 w-48 border-2 border-gray-200 rounded-full"/>
                             <div>
                                 <h2 className="text-3xl capitalize font-semibold mt-24">{user?.name}</h2>
@@ -43,7 +41,7 @@ export default function Index({auth, user, mustVerifyEmail, status}) {
                         {isMyProfile &&
                             <button
                                 className="flex items-center rounded space-x-2 bg-blue-500 text-white mt-20 py-2 px-6 mr-10 self-center hover:bg-blue-600">
-                                <EditIcon fill="#fff"/>
+                                <EditIcon stroke="#fff"/>
                                 <span>Edit</span>
                             </button>
                         }
