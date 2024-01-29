@@ -18,7 +18,6 @@ export default function CoverImage({isMyProfile, user}) {
 
     return (
         <>
-            {/* TODO: Selecting cover image preview ain't working*/}
             <img
                 src={(data.cover && URL.createObjectURL(data.cover)) || user?.cover_path || '/images/defaults/user-cover.jpg'}
                 alt={data.cover || user?.cover_path || 'default image'}
@@ -30,7 +29,6 @@ export default function CoverImage({isMyProfile, user}) {
                     <ImageEditIcon/>
                     <span>{user.cover_path ? 'Edit' : 'Upload'} cover image</span>
                     <input
-                        // ref={coverImageRef}
                         type="file"
                         className="absolute h-full w-full opacity-0 cursor-pointer"
                         value={data.avatar}
