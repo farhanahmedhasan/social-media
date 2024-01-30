@@ -5,13 +5,19 @@ import CancelIcon from "@/Components/icons/CancelIcon.jsx";
 import TickIcon from "@/Components/icons/TickIcon.jsx";
 
 export default function CoverImage({isMyProfile, user, authUser}) {
-    const {data, setData, post, errors} = useForm({
+    const {data, setData, post, errors, setError} = useForm({
         _method: "patch",
         cover: ""
     })
 
     function handleChange(e) {
         const file = e.target.files[0]
+        if (file.type === "video/mp4") {
+            setError('cover', 'Please Insert a valid image type file ex:jpg,png')
+            handleCancel()
+            return
+        }
+
         setData("cover", file)
     }
 
