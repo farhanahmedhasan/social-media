@@ -27,7 +27,7 @@ export default function Index({auth, user, mustVerifyEmail, status}) {
             <Head title="Profile"/>
             <section className="container mx-auto">
                 <div className="relative group bg-white">
-                    <CoverImage isMyProfile={isMyProfile} user={user}/>
+                    <CoverImage isMyProfile={isMyProfile} user={user} authUser={authUser}/>
 
                     <div className="flex justify-between ml-10 -mt-20 pb-4">
                         <div className="flex space-x-4">

@@ -16,7 +16,7 @@ export default function UpdateProfileInformation({mustVerifyEmail, status, class
 
     const submit = (e) => {
         e.preventDefault();
-        patch(route('profile.update'));
+        patch(route('profile.update', {username: user.username}));
     };
 
     return (
@@ -71,7 +71,7 @@ export default function UpdateProfileInformation({mustVerifyEmail, status, class
                         className="mt-1 block w-full"
                         value={data.email}
                         onChange={(e) => setData('email', e.target.value)}
-                        required
+                    
                         autoComplete="username"
                     />
 

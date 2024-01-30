@@ -4,8 +4,9 @@ import ImageEditIcon from "@/Components/icons/ImageEditIcon.jsx";
 import CancelIcon from "@/Components/icons/CancelIcon.jsx";
 import TickIcon from "@/Components/icons/TickIcon.jsx";
 
-export default function CoverImage({isMyProfile, user}) {
-    const {data, setData, post} = useForm({
+export default function CoverImage({isMyProfile, user, authUser}) {
+    const {data, setData, post, errors} = useForm({
+        _method: "patch",
         cover: ""
     })
 
@@ -19,14 +20,20 @@ export default function CoverImage({isMyProfile, user}) {
     }
 
     function handleSubmit() {
-        console.log(data.cover)
+        post(route('profile.updateImage', {username: authUser.username}), {
+            onSuccess: () => {
+                handleCancel()
+            }
+        })
     }
+
+    const coverImage = (user.cover_path && user.cover_path.length > 9) ? user.cover_path : '/images/defaults/user-cover.jpg'
 
     return (
         <>
             <img
-                src={(data.cover && URL.createObjectURL(data.cover)) || user?.cover_path || '/images/defaults/user-cover.jpg'}
-                alt={data.cover || user?.cover_path || 'default image'}
+                src={(data.cover && URL.createObjectURL(data.cover)) || coverImage}
+                alt={data.cover || user.cover_path}
                 className="h-[360px] w-full object-cover"/>
 
             {isMyProfile &&

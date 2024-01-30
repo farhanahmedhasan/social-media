@@ -16,15 +16,18 @@ class ProfileUpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => ['required', 'string', 'max:255'],
-            'username' => ['required', 'string', 'max:255', 'regex:/^[a-zA-Z0-9\-\.]+$/i', Rule::unique(User::class)->ignore($this->user()->id)],
-            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', Rule::unique(User::class)->ignore($this->user()->id)],
+            'name' => ['string', 'min:4', 'max:255', 'regex:/^[a-zA-Z\s]*$/'],
+            'username' => ['string', 'min:4', 'max:255', 'regex:/^[a-zA-Z0-9\-\.]+$/i', Rule::unique(User::class)->ignore($this->user()->id)],
+            'email' => ['string', 'lowercase', 'email', 'max:255', Rule::unique(User::class)->ignore($this->user()->id)],
+            'avatar_path' => ['image'],
+            'cover_path' => ['image'],
         ];
     }
 
     public function messages(): array
     {
         return [
+            'name.regex' => 'Name can only contain letters',
             'username.regex' => 'Username can only contain alphanumeric characters, dash(-) and dot(.)'
         ];
     }
