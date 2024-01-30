@@ -5,12 +5,13 @@ import ArrowDownIcon from "@/Components/icons/ArrowDownIcon.jsx";
 import ApplicationLogo from '@/Components/ApplicationLogo';
 import Dropdown from '@/Components/Dropdown';
 import ResponsiveNavLink from "@/Components/ResponsiveNavLink.jsx";
+import BaseLayout from "@/Layouts/BaseLayout.jsx";
 
 export default function Authenticated({user, children}) {
     const [showingNavigationDropdown, setShowingNavigationDropdown] = useState(false);
 
     return (
-        <>
+        <BaseLayout>
             <nav className="sticky top-0 z-10  bg-white border-b border-gray-100">
                 <div className="px-4 sm:px-6 lg:px-10">
                     <div className="flex items-center justify-between h-16">
@@ -102,6 +103,6 @@ export default function Authenticated({user, children}) {
             </nav>
 
             <main>{children}</main>
-        </>
+        </BaseLayout>
     );
 }
