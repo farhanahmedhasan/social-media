@@ -27,12 +27,10 @@ export default function CoverImage({isMyProfile, user, authUser}) {
         })
     }
 
-    const coverImage = (user.cover_path && user.cover_path.length > 9) ? user.cover_path : '/images/defaults/user-cover.jpg'
-
     return (
         <>
             <img
-                src={(data.cover && URL.createObjectURL(data.cover)) || coverImage}
+                src={(data.cover && URL.createObjectURL(data.cover)) || user.cover_path}
                 alt={data.cover || user.cover_path}
                 className="h-[360px] w-full object-cover"/>
 

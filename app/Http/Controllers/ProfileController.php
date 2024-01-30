@@ -6,6 +6,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use App\Http\Requests\ProfileUpdateRequest;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Validation\Rules\File;
 use App\Http\Resources\UserResource;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
@@ -55,11 +56,12 @@ class ProfileController extends Controller
 
     public function updateImage(User $user, Request $request): void
     {
-//        dd($request->all());
+        // TODO:Video file tries to upload
         $attributes = $request->validate([
-            'avatar' => ['image'],
-            'cover' => ['image']
+//            'avatar' => ['image'],
+            'cover' => ['image', 'mimes:jpeg,png', File::image()->min('1kb')->max('5mb')]
         ]);
+
 
         $avatar = $attributes['avatar'] ?? null;
         $cover = $attributes['cover'] ?? null;
@@ -70,7 +72,7 @@ class ProfileController extends Controller
         }
 
         if ($cover) {
-            $path = $request->file('cover')->store('covers/' . $user->username . "/");
+            $path = $request->file('cover')->store('covers/' . auth()->user()->id . "/");
             $user->update(['cover_path' => $path]);
         }
 //        dd($avatar, $cover);
@@ -89,4 +91,6 @@ class ProfileController extends Controller
         return Redirect::route("profile", [$request->user()->username]);
 
     }
+
+
 }

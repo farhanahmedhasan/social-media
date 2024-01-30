@@ -19,8 +19,6 @@ class ProfileUpdateRequest extends FormRequest
             'name' => ['string', 'min:4', 'max:255', 'regex:/^[a-zA-Z\s]*$/'],
             'username' => ['string', 'min:4', 'max:255', 'regex:/^[a-zA-Z0-9\-\.]+$/i', Rule::unique(User::class)->ignore($this->user()->id)],
             'email' => ['string', 'lowercase', 'email', 'max:255', Rule::unique(User::class)->ignore($this->user()->id)],
-            'avatar_path' => ['image'],
-            'cover_path' => ['image'],
         ];
     }
 
