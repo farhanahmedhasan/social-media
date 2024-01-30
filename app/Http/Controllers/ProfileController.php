@@ -25,9 +25,6 @@ class ProfileController extends Controller
         ]);
     }
 
-    /**
-     * Display the user's profile form.
-     */
     public function edit(Request $request): Response
     {
         return Inertia::render('Profile/Index', [
@@ -56,26 +53,16 @@ class ProfileController extends Controller
 
     public function updateImage(User $user, Request $request): void
     {
-        // TODO:Video file tries to upload
         $attributes = $request->validate([
-//            'avatar' => ['image'],
             'cover' => ['image', 'mimes:jpeg,png', File::image()->min('1kb')->max('5mb')]
         ]);
 
-
-        $avatar = $attributes['avatar'] ?? null;
         $cover = $attributes['cover'] ?? null;
-
-        if ($avatar) {
-            $path = $request->file('avatar')->storeAs('avatars', auth()->user()->id);
-            $user->update(['avatar_path' => $avatar]);
-        }
 
         if ($cover) {
             $path = $request->file('cover')->store('covers/' . auth()->user()->id . "/");
             $user->update(['cover_path' => $path]);
         }
-//        dd($avatar, $cover);
     }
 
     public function update(ProfileUpdateRequest $request): RedirectResponse
@@ -91,6 +78,4 @@ class ProfileController extends Controller
         return Redirect::route("profile", [$request->user()->username]);
 
     }
-
-
 }

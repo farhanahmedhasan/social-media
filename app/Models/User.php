@@ -9,10 +9,9 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Storage;
+use Spatie\Sluggable\SlugOptions;
 use Laravel\Sanctum\HasApiTokens;
 use Spatie\Sluggable\HasSlug;
-use Spatie\Sluggable\SlugOptions;
-use function PHPUnit\Framework\isNull;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
@@ -60,7 +59,6 @@ class User extends Authenticatable implements MustVerifyEmail
             if (is_null($value) || $value === "") {
                 return '/images/defaults/user-cover.jpg';
             }
-
             return Storage::url($value);
         });
     }
