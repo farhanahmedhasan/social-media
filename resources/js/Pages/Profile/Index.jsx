@@ -53,7 +53,7 @@ export default function Index({auth, user, mustVerifyEmail, status}) {
                     <Tab.Group>
                         <Tab.List className="flex space-x-6 bg-white px-8">
                             {tabs.map(tab => {
-                                if (!(isMyProfile) && (tab.id === "about")) return
+                                if ((!isMyProfile) && (tab.id === "about")) return
                                 return <Tab
                                     key={tab.id}
                                     className={({selected}) =>
