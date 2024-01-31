@@ -1,9 +1,9 @@
 import {useForm} from "@inertiajs/react";
+import {toast} from "sonner";
 
 import ImageEditIcon from "@/Components/icons/ImageEditIcon.jsx";
 import CancelIcon from "@/Components/icons/CancelIcon.jsx";
 import TickIcon from "@/Components/icons/TickIcon.jsx";
-import {toast} from "sonner";
 
 export default function CoverImage({isMyProfile, user}) {
     const {data, setData, post, errors, setError} = useForm({
@@ -32,8 +32,8 @@ export default function CoverImage({isMyProfile, user}) {
                 toast.success('Cover image has been updated successfully')
             },
 
-            onError: () => {
-                toast.error(errors.cover)
+            onError: (e) => {
+                toast.error(e.cover)
             }
         })
     }
