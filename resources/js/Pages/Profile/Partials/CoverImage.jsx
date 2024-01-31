@@ -10,6 +10,8 @@ export default function CoverImage({isMyProfile, user, authUser}) {
         cover: ""
     })
 
+    console.log(errors)
+
     function handleChange(e) {
         const file = e.target.files[0]
         if (file.type === "video/mp4") {
@@ -17,7 +19,6 @@ export default function CoverImage({isMyProfile, user, authUser}) {
             handleCancel()
             return
         }
-
         setData("cover", file)
     }
 
@@ -26,7 +27,7 @@ export default function CoverImage({isMyProfile, user, authUser}) {
     }
 
     function handleSubmit() {
-        post(route('profile.updateImage', {username: authUser.username}), {
+        post(route('profileImage.update'), {
             onSuccess: () => {
                 handleCancel()
             }

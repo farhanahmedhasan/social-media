@@ -6,7 +6,6 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use App\Http\Requests\ProfileUpdateRequest;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Validation\Rules\File;
 use App\Http\Resources\UserResource;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
@@ -33,6 +32,20 @@ class ProfileController extends Controller
         ]);
     }
 
+    public function update(ProfileUpdateRequest $request): RedirectResponse
+    {
+        $request->user()->fill($request->validated());
+
+        if ($request->user()->isDirty('email')) {
+            $request->user()->email_verified_at = null;
+        }
+
+        $request->user()->save();
+
+        return Redirect::route("profile", [$request->user()->username]);
+
+    }
+
     public function destroy(Request $request): RedirectResponse
     {
         $request->validate([
@@ -49,33 +62,5 @@ class ProfileController extends Controller
         $request->session()->regenerateToken();
 
         return Redirect::to('/');
-    }
-
-    public function updateImage(User $user, Request $request): void
-    {
-        $attributes = $request->validate([
-            'cover' => ['image', 'mimes:jpeg,png', File::image()->min('1kb')->max('5mb')]
-        ]);
-
-        $cover = $attributes['cover'] ?? null;
-
-        if ($cover) {
-            $path = $request->file('cover')->store('covers/' . auth()->user()->id . "/");
-            $user->update(['cover_path' => $path]);
-        }
-    }
-
-    public function update(ProfileUpdateRequest $request): RedirectResponse
-    {
-        $request->user()->fill($request->validated());
-
-        if ($request->user()->isDirty('email')) {
-            $request->user()->email_verified_at = null;
-        }
-
-        $request->user()->save();
-
-        return Redirect::route("profile", [$request->user()->username]);
-
     }
 }
