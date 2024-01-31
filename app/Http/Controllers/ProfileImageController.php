@@ -2,20 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Validation\Rules\File;
-use Illuminate\Http\Request;
+use App\Http\Requests\ProfileImageUpdateRequest;
 
 class ProfileImageController extends Controller
 {
-    public function update(Request $request): void
+    public function update(ProfileImageUpdateRequest $request): void
     {
         $user = auth()->user();
 
-        $attributes = $request->validate([
-            'cover' => ['image', 'mimes:jpeg,png', File::image()->min('1kb')->max('5mb')]
-        ]);
-
-        $cover = $attributes['cover'] ?? null;
+        $cover = $request['cover'] ?? null;
 
         if ($cover) {
             $path = $request->file('cover')->store('covers/' . $user->id . "/");

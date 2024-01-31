@@ -4,13 +4,11 @@ import ImageEditIcon from "@/Components/icons/ImageEditIcon.jsx";
 import CancelIcon from "@/Components/icons/CancelIcon.jsx";
 import TickIcon from "@/Components/icons/TickIcon.jsx";
 
-export default function CoverImage({isMyProfile, user, authUser}) {
+export default function CoverImage({isMyProfile, user}) {
     const {data, setData, post, errors, setError} = useForm({
         _method: "patch",
         cover: ""
     })
-
-    console.log(errors)
 
     function handleChange(e) {
         const file = e.target.files[0]
