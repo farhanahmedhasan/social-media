@@ -24,7 +24,7 @@ class ProfileImageUpdateRequest extends FormRequest
     {
         return [
             'cover' => ['image', 'mimes:jpg,jpeg,png', File::image()->min('1kb')->max('10mb')],
-            'avatar' => ['image', 'mimes:jpg,jpeg,png', File::image()->min('1kb')->max('0.5mb')]
+            'avatar' => ['image', 'mimes:jpg,jpeg,png', File::image()->min('1kb')->max('5mb')]
         ];
     }
 }

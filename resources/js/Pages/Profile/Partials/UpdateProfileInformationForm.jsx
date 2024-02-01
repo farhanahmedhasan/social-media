@@ -4,6 +4,7 @@ import PrimaryButton from '@/Components/PrimaryButton';
 import TextInput from '@/Components/TextInput';
 import {Link, useForm, usePage} from '@inertiajs/react';
 import {Transition} from '@headlessui/react';
+import {toast} from "sonner";
 
 export default function UpdateProfileInformation({mustVerifyEmail, status, className = ''}) {
     const user = usePage().props.auth.user;
@@ -16,7 +17,15 @@ export default function UpdateProfileInformation({mustVerifyEmail, status, class
 
     const submit = (e) => {
         e.preventDefault();
-        patch(route('profile.update', {username: user.username}));
+        patch(route('profile.update'), {
+            preserveScroll: true,
+            onSuccess: () => {
+                toast.success("Profile information has been updated successfully")
+            },
+            onError: (e) => {
+                toast.error(e.name || e.username || e.email)
+            }
+        });
     };
 
     return (
@@ -71,7 +80,7 @@ export default function UpdateProfileInformation({mustVerifyEmail, status, class
                         className="mt-1 block w-full"
                         value={data.email}
                         onChange={(e) => setData('email', e.target.value)}
-                    
+
                         autoComplete="username"
                     />
 
