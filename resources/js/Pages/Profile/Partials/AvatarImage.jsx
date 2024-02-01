@@ -1,17 +1,25 @@
 import {useForm} from "@inertiajs/react";
+import {toast} from "sonner";
 
 import CameraAddIcon from "@/Components/icons/CameraAddIcon.jsx";
 import CancelIcon from "@/Components/icons/CancelIcon.jsx";
 import TickIcon from "@/Components/icons/TickIcon.jsx";
 
 export default function AvatarImage({isMyProfile, user}) {
-    const {data, setData} = useForm({
+    const {data, setData, post} = useForm({
         _method: "patch",
         avatar: ""
     })
 
     function handleChange(e) {
         const file = e.target.files[0]
+
+        if (file.type === "video/mp4") {
+            toast.error('Please Insert a valid image type file ex:jpg,png')
+            handleCancel()
+            return
+        }
+
         setData("avatar", file)
     }
 
@@ -20,15 +28,23 @@ export default function AvatarImage({isMyProfile, user}) {
     }
 
     function handleSubmit() {
-        console.log(data.avatar)
-    }
+        post(route("profileImage.update"), {
+            onSuccess: () => {
+                handleCancel()
+                toast.success("Profile picture has been successfully updated")
+            },
 
-    const avatarImage = "/images/defaults/user-profile.png"
+            onError: (e) => {
+                toast.error(e.avatar)
+                handleCancel()
+            }
+        });
+    }
 
     return (
         <div className="relative">
-            <img src={(data.avatar && URL.createObjectURL(data.avatar)) || user?.avatar_path || avatarImage}
-                 alt={user?.avatar_path}
+            <img src={(data.avatar && URL.createObjectURL(data.avatar)) || user.avatar_path}
+                 alt={user.avatar_path}
                  className="h-48 w-48 object-cover border-2 border-gray-200 rounded-full"/>
 
             {(isMyProfile && !data.avatar) &&

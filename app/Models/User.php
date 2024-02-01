@@ -21,6 +21,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'name',
         'username',
         'cover_path',
+        'avatar_path',
         'email',
         'password',
     ];
@@ -59,6 +60,17 @@ class User extends Authenticatable implements MustVerifyEmail
             if (is_null($value) || $value === "") {
                 return '/images/defaults/user-cover.jpg';
             }
+            return Storage::url($value);
+        });
+    }
+
+    public function avatarPath(): Attribute
+    {
+        return Attribute::get(function ($value) {
+            if (is_null($value) || $value === "") {
+                return '/images/defaults/user-profile.png';
+            }
+
             return Storage::url($value);
         });
     }

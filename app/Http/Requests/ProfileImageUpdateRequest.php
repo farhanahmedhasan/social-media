@@ -23,7 +23,8 @@ class ProfileImageUpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'cover' => ['image', 'mimes:jpg,jpeg,png', File::image()->min('1kb')->max('5mb')]
+            'cover' => ['image', 'mimes:jpg,jpeg,png', File::image()->min('1kb')->max('10mb')],
+            'avatar' => ['image', 'mimes:jpg,jpeg,png', File::image()->min('1kb')->max('0.5mb')]
         ];
     }
 }
