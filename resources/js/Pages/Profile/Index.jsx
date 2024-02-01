@@ -5,6 +5,7 @@ import CoverImage from "@/Pages/Profile/Partials/CoverImage.jsx";
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import EditIcon from "@/Components/icons/EditIcon.jsx";
 import Edit from "@/Pages/Profile/Edit.jsx";
+import AvatarImage from "@/Pages/Profile/Partials/AvatarImage.jsx";
 
 function classNames(...classes) {
     return classes.filter(Boolean).join(' ')
@@ -31,8 +32,7 @@ export default function Index({auth, user, mustVerifyEmail, status}) {
 
                     <div className="flex justify-between ml-10 -mt-20 pb-4">
                         <div className="flex space-x-4">
-                            <img src="/images/defaults/user-profile.png" alt={user?.avatar_path}
-                                 className="h-48 w-48 border-2 border-gray-200 rounded-full"/>
+                            <AvatarImage isMyProfile={isMyProfile} user={user} authUser={authUser}/>
                             <div>
                                 <h2 className="text-3xl capitalize font-semibold mt-24">{user?.name}</h2>
                                 <span className="text-sm font-medium mt-24">1105 Followings</span>
