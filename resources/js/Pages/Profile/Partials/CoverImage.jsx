@@ -39,7 +39,7 @@ export default function CoverImage({isMyProfile, user}) {
     }
 
     return (
-        <>
+        <div className="relative bg-white border-b">
             <img
                 src={(data.cover && URL.createObjectURL(data.cover)) || user.cover_path}
                 alt={data.cover || user.cover_path}
@@ -55,7 +55,7 @@ export default function CoverImage({isMyProfile, user}) {
                             <input
                                 type="file"
                                 className="absolute h-full w-full opacity-0 cursor-pointer"
-                                value={data.avatar}
+                                value={data.cover}
                                 onChange={handleChange}
                             />
                         </button>
@@ -81,6 +81,6 @@ export default function CoverImage({isMyProfile, user}) {
                     }
                 </div>
             }
-        </>
+        </div>
     )
 }

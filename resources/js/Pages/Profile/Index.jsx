@@ -27,25 +27,23 @@ export default function Index({auth, user, mustVerifyEmail, status}) {
         <AuthenticatedLayout user={authUser}>
             <Head title="Profile"/>
             <section className="container mx-auto">
-                <div className="relative group bg-white">
-                    <CoverImage isMyProfile={isMyProfile} user={user} authUser={authUser}/>
+                <CoverImage isMyProfile={isMyProfile} user={user} authUser={authUser}/>
 
-                    <div className="flex justify-between ml-10 -mt-20 pb-4">
-                        <div className="flex space-x-4">
-                            <AvatarImage isMyProfile={isMyProfile} user={user} authUser={authUser}/>
-                            <div>
-                                <h2 className="text-3xl capitalize font-semibold mt-24">{user?.name}</h2>
-                                <span className="text-sm font-medium mt-24">1105 Followings</span>
-                            </div>
+                <div className="bg-white flex justify-between pl-10 -mt-20 pb-4">
+                    <div className="flex space-x-4">
+                        <AvatarImage isMyProfile={isMyProfile} user={user} authUser={authUser}/>
+                        <div>
+                            <h2 className="text-3xl capitalize font-semibold mt-24">{user?.name}</h2>
+                            <span className="text-sm font-medium mt-24">1105 Followings</span>
                         </div>
-                        {isMyProfile &&
-                            <button
-                                className="flex items-center rounded space-x-2 bg-blue-500 text-white mt-20 py-2 px-6 mr-10 self-center hover:bg-blue-600">
-                                <EditIcon stroke="#fff"/>
-                                <span>Edit</span>
-                            </button>
-                        }
                     </div>
+                    {isMyProfile &&
+                        <button
+                            className="flex items-center rounded space-x-2 bg-blue-500 text-white mt-20 py-2 px-6 mr-10 self-center hover:bg-blue-600">
+                            <EditIcon stroke="#fff"/>
+                            <span>Edit</span>
+                        </button>
+                    }
                 </div>
 
                 {/* Tabs */}
