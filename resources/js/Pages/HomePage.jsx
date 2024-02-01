@@ -6,7 +6,7 @@ import Followings from "@/Components/app/Followings.jsx";
 import Groups from "@/Components/app/Groups.jsx";
 import Posts from "@/Components/app/Posts.jsx";
 
-export default function HomePage({auth}) {
+export default function HomePage({auth, posts}) {
     return (
         <Authenticated user={auth.user}>
             <Head title="Socially"/>
@@ -21,7 +21,7 @@ export default function HomePage({auth}) {
 
                 <div className="flex flex-col lg:order-2 lg:col-span-6">
                     <PostsCreate/>
-                    <Posts/>
+                    <Posts posts={posts}/>
                 </div>
             </div>
         </Authenticated>
