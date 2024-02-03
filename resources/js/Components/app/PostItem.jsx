@@ -1,5 +1,6 @@
 import {Disclosure} from "@headlessui/react";
 import {Link} from "@inertiajs/react";
+
 import PostAttachment from "@/Components/app/PostAttachment.jsx";
 import PostReactions from "@/Components/app/PostReactions.jsx";
 
@@ -8,7 +9,7 @@ export default function PostItem({post}) {
         <article className="bg-white border border-gray-300 rounded p-2 shadow-sm">
             <header className="flex items-center gap-2 mb-2">
                 <Link href="#">
-                    <img src={post.user.avatar} alt={post.user.name}
+                    <img src={post.user.avatar_path} alt={post.user.name}
                          className="h-12 w-12 rounded-full object-cover border-2 hover:border-blue-500"/>
                 </Link>
                 <div>
@@ -21,7 +22,7 @@ export default function PostItem({post}) {
                             <h4 className="font-bold hover:underline">{post.group?.name}</h4>
                         </Link>
                     </div>
-                    <span className="text-xs text-gray-400">{post.created_at}</span>
+                    <span className="text-xs text-gray-400">{post.created_at.diff_for_humans}</span>
                 </div>
             </header>
 
@@ -32,10 +33,14 @@ export default function PostItem({post}) {
                         <Disclosure.Panel>
                             <div dangerouslySetInnerHTML={{__html: post.body}}/>
                         </Disclosure.Panel>
-                        <Disclosure.Button>
+                        {post.body.length > 255 &&
+                            <Disclosure.Button>
                                 <span
-                                    className="font-semibold text-blue-500 hover:underline">{open ? "See less" : "See more..."}</span>
-                        </Disclosure.Button>
+                                    className="font-semibold text-blue-500 hover:underline">
+                                    {open ? "See less" : "See more..."}
+                                </span>
+                            </Disclosure.Button>
+                        }
                     </>
                 )}
             </Disclosure>

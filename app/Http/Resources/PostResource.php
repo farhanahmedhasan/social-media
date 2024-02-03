@@ -2,8 +2,8 @@
 
 namespace App\Http\Resources;
 
-use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Http\Request;
 
 class PostResource extends JsonResource
 {
@@ -22,8 +22,14 @@ class PostResource extends JsonResource
             'group' => $this->group,
             'body' => $this->body,
             'attachments' => $this->attachments,
-            'created_at' => $this->created_at,
-            'updated_at' => $this->updated_at,
+            'created_at' => [
+                'raw' => $this->created_at,
+                'diff_for_humans' => $this->created_at->diffForHumans()
+            ],
+            'updated_at' => [
+                'raw' => $this->updated_at,
+                'diff_for_humans' => $this->updated_at->diffForHumans()
+            ],
         ];
     }
 }

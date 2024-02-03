@@ -21,7 +21,7 @@ export default function HomePage({auth, posts}) {
 
                 <div className="flex flex-col lg:order-2 lg:col-span-6">
                     <PostsCreate/>
-                    <Posts posts={posts}/>
+                    <Posts posts={posts.data}/>
                 </div>
             </div>
         </Authenticated>
