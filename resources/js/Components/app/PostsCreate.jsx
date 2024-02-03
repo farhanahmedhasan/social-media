@@ -8,7 +8,7 @@ export default function PostsCreate() {
     const [isPostCreating, setIsPostCreating] = useState(false)
     const textAreaRef = useRef(null)
 
-    const {data, setData} = useForm({
+    const {data, setData, post, reset} = useForm({
         body: ""
     })
 
@@ -19,6 +19,12 @@ export default function PostsCreate() {
     function handleTextAreaChange(e) {
         setData('body', e.target.value)
         autoSizeTextArea(textAreaRef);
+    }
+
+    function handleSubmit() {
+        post(route('post.store'), {
+            onSuccess: () => reset('body')
+        })
     }
 
     return (
@@ -39,7 +45,9 @@ export default function PostsCreate() {
                         Attach files
                         <input type="file" className="absolute top-0 left-0 w-full opacity-0"/>
                     </button>
-                    <button className="py-2 px-6 text-white bg-blue-700 hover:bg-blue-800 rounded">Submit</button>
+                    <button type="submit" onClick={handleSubmit}
+                            className="py-2 px-6 text-white bg-blue-700 hover:bg-blue-800 rounded">Submit
+                    </button>
                 </div>
             }
         </div>

@@ -2,18 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Post;
-use Illuminate\Http\Request;
-use Inertia\Inertia;
+use App\Http\Resources\PostResource;
 use Inertia\Response;
+use App\Models\Post;
+use Inertia\Inertia;
 
 class HomePageController extends Controller
 {
-    public function index(Request $request): Response
+    public function index(): Response
     {
-//        dd(Post::query()->paginate(20));
+        $posts = Post::query()->latest()->paginate(20);
         return Inertia::render('HomePage', [
-            'posts' => Post::query()->paginate(20)
+            'posts' => PostResource::collection($posts)
         ]);
     }
 }
